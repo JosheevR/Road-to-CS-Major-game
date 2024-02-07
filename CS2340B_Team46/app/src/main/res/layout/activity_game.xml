@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cs2340.viewmodel.GameViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:translationX="0dp"
+        android:translationY="0dp">
+
+        <GridView
+            android:id="@+id/tiles"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="-1dp"
+            android:layout_marginTop="0dp"
+            android:numColumns="12"
+            android:translationY="5dp"
+            bind:map="@{viewModel.map}" />
+
+        <TextView
+            android:id="@+id/difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="110dp"
+            android:layout_marginTop="330dp"
+            android:text="@{viewModel.difficulty}"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/difficultyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="330dp"
+            android:text="Difficulty: "
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/hungerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:text="Hunger:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/hunger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="30dp"
+            android:text="@{viewModel.hungerText}"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/healthLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="HP:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/health"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
+            android:text="@{viewModel.healthText}"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/sprite"
+            android:layout_width="38dp"
+            android:layout_height="44dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationX="@{viewModel.translateX}"
+            android:translationY="@{viewModel.translateY}"
+            app:imageResource="@{viewModel.spriteResource}" />
+
+        <ImageView
+            android:id="@+id/p1"
+            android:layout_width="38dp"
+            android:layout_height="44dp"
+            android:translationX="@{viewModel.PowerUp1X}"
+            android:translationY="@{viewModel.PowerUp1Y}"
+            app:imageResource="@{viewModel.PowerUp1Sprite}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/p2"
+            android:layout_width="38dp"
+            android:layout_height="44dp"
+            android:translationX="@{viewModel.PowerUp2X}"
+            android:translationY="@{viewModel.PowerUp2Y}"
+            app:imageResource="@{viewModel.PowerUp2Sprite}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+      
+        <ImageView
+            android:id="@+id/weapon"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:translationX="@{viewModel.weaponX}"
+            android:translationY="@{viewModel.weaponY}"
+            app:imageResource="@{viewModel.weaponSprite}" />
+
+        <ImageView
+            android:id="@+id/attack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:visibility= "@{viewModel.attackVisibility, default=invisible}"
+            android:translationX="@{viewModel.translateX + 100}"
+            android:translationY="@{viewModel.translateY - 30}"
+            app:imageResource="@{viewModel.attackSprite}" />
+
+        <ImageView
+            android:id="@+id/enemy1"
+            android:layout_width="38dp"
+            android:layout_height="44dp"
+            android:translationX="@{viewModel.enemy1X}"
+            android:translationY="@{viewModel.enemy1Y}"
+            app:imageResource="@{viewModel.enemy1Sprite}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/enemy2"
+            android:layout_width="38dp"
+            android:layout_height="44dp"
+            android:translationX="@{viewModel.enemy2X}"
+            android:translationY="@{viewModel.enemy2Y}"
+            app:imageResource="@{viewModel.enemy2Sprite}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/enemy1HP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-16dp"
+            android:text="@{viewModel.enemy1HP}"
+            android:translationX="@{viewModel.enemy1X}"
+            android:translationY="@{viewModel.enemy1Y}"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/enemy2HP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-16dp"
+            android:text="@{viewModel.enemy2HP}"
+            android:translationX="@{viewModel.enemy2X}"
+            android:translationY="@{viewModel.enemy2Y}"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/playerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="-16dp"
+            android:text="@{viewModel.playerName}"
+            android:translationX="@{viewModel.translateX}"
+            android:translationY="@{viewModel.translateY}"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/attempt"
+            android:layout_width="31dp"
+            android:layout_height="19dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="340dp"
+            android:layout_marginTop="330dp"
+            android:text="@{viewModel.attempt}"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/attemptLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="330dp"
+            android:text="Attempt:"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/scoreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="450dp"
+            android:layout_marginTop="330dp"
+            android:text="Score"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="640dp"
+            android:layout_marginTop="330dp"
+            android:text="@{viewModel.timerText}"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="520dp"
+            android:layout_marginTop="330dp"
+            android:text="@{viewModel.score}"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="630dp"
+            android:layout_marginTop="0dp"
+            android:background="#63543D"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <ImageView
+                android:id="@+id/item1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:translationY="-10dp"
+                app:imageResource="@{viewModel.item1Sprite}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/item2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:translationY="-10dp"
+                app:imageResource="@{viewModel.item2Sprite}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/item3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:translationY="-10dp"
+                app:imageResource="@{viewModel.item3Sprite}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/item4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:translationY="-10dp"
+                app:imageResource="@{viewModel.item4Sprite}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/item5"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:translationY="-10dp"
+                app:imageResource="@{viewModel.item5Sprite}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+</layout>

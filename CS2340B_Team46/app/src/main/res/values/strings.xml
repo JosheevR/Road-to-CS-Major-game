@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CS2340</string>
+    <string name="lb_name">NAME: </string>
+    <string name="lb_sprite">SPRITE: </string>
+    <string name="lb_score">SCORE: </string>
+</resources>

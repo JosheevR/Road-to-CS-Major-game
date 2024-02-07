@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.cs2340.viewmodel.ConfigViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        bind:toastMessage="@{viewModel.toastMessage}">
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="16dp"
+            android:onClick="@{() -> viewModel.onStartClicked()}"
+            android:text="Start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/customizeHeader"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:text="Customize"
+                    android:textSize="32sp" />
+
+                <EditText
+                    android:id="@+id/nameField"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:inputType="text"
+                    android:text="@={viewModel.playerName}" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="140dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/sprite1View"
+                        android:layout_width="80dp"
+                        android:layout_height="140dp"
+                        app:srcCompat="@drawable/sprite1" />
+
+                    <ImageView
+                        android:id="@+id/sprite2View"
+                        android:layout_width="80dp"
+                        android:layout_height="140dp"
+                        app:srcCompat="@drawable/sprite2" />
+
+                    <ImageView
+                        android:id="@+id/sprite3View"
+                        android:layout_width="80dp"
+                        android:layout_height="140dp"
+                        app:srcCompat="@drawable/sprite3" />
+                </LinearLayout>
+
+                <RadioGroup
+                    android:id="@+id/spriteGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@={viewModel.sprite}"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/sprite1"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="yellow" />
+
+                    <RadioButton
+                        android:id="@+id/sprite2"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="pink" />
+
+                    <RadioButton
+                        android:id="@+id/sprite3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:text="blue" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/difficultyHeader"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:text="Difficulty"
+                    android:textSize="32sp" />
+
+                <RadioGroup
+                    android:id="@+id/difficultyGroup"
+                    android:layout_width="240dp"
+                    android:layout_height="wrap_content"
+                    android:checkedButton="@={viewModel.difficulty}">
+
+                    <RadioButton
+                        android:id="@+id/difficultyEasy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="easy" />
+
+                    <RadioButton
+                        android:id="@+id/difficultyMed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="medium" />
+
+                    <RadioButton
+                        android:id="@+id/difficultyHard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="hard" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
